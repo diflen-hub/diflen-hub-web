@@ -31,7 +31,7 @@ export const unitiesApi = {
    */
   importPlaylist: async (playlistUrl: string) => {
     const encoded = encodeURIComponent(playlistUrl);
-    const { data } = await api.post(`/api/unity/import/${encoded}`);
+    const { data } = await api.post(`/api/playlist/import/${encoded}`);
     return data;
   },
 };
