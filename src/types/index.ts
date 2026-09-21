@@ -22,24 +22,25 @@ export interface LoginResponse {
 }
 
 export interface Unity {
+  publicId: string;
   name: string;
   description: string | null;
   unityCover?: string | null;
 }
 
 export interface UnityDetail extends Unity {
-  publicId: string;
   wasUnityCorrectlyAnswered: boolean;
   wasCertificateAlreadyIssued: boolean;
 }
 
 export interface Lesson {
+  publicId: string;
   title: string;
+  sequence: number;
   concluded: boolean;
 }
 
 export interface LessonDetail extends Lesson {
-  publicId: string;
   description: string | null;
   videoUrl: string | null;
 }
@@ -87,4 +88,67 @@ export interface VerifyAnswersResponse {
 export interface CertificateResponse {
   unityName: string;
   createdAt: string;
+}
+
+export interface AdminAlternative {
+  publicId: string;
+  text: string;
+  isCorrect: boolean;
+}
+
+export interface AdminQuestion {
+  publicId: string;
+  statement: string;
+  alternatives: AdminAlternative[];
+}
+
+export interface AdminLesson {
+  publicId: string;
+  title: string;
+  description: string | null;
+  sequence: number;
+  videoUrl: string | null;
+  questions: AdminQuestion[];
+}
+
+export interface CreateUnityInput {
+  name: string;
+  description?: string | null;
+}
+
+export type UpdateUnityInput = CreateUnityInput;
+
+export interface CreateLessonInput {
+  unityPublicId: string;
+  title: string;
+  description?: string | null;
+  sequence: number;
+  videoUrl?: string | null;
+}
+
+export interface UpdateLessonInput {
+  title: string;
+  description?: string | null;
+  sequence: number;
+  videoUrl?: string | null;
+}
+
+export interface CreateQuestionInput {
+  lessonPublicId: string;
+  statement: string;
+}
+
+export interface UpdateQuestionInput {
+  statement: string;
+}
+
+export interface CreateAlternativeInput {
+  questionPublicId: string;
+  text: string;
+  isCorrect: boolean;
+}
+
+export interface UpdateAlternativeInput {
+  text: string;
+  isCorrect: boolean;
 }

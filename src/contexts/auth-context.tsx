@@ -38,6 +38,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const username = localStorage.getItem('diflen-hub-username');
 
     if (token && username) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- hidratação síncrona do estado a partir do localStorage externo
       setUser({ username, profile: null });
       fetchUserProfile(username).finally(() => setLoading(false));
     } else {

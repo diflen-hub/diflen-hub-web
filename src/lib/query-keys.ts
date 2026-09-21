@@ -29,6 +29,10 @@ export const queryKeys = {
     byLesson: (unityName: string, lessonName: string) =>
       ['questions', unityName, lessonName] as const,
   },
+  adminLesson: {
+    /** Chave da árvore admin de uma aula (questões com alternativas corretas). */
+    detail: (publicId: string) => ['admin-lesson', publicId] as const,
+  },
   certificates: {
     /** Chave da listagem de certificados do usuário. */
     all: ['certificates'] as const,
